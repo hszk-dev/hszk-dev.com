@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { NavLink } from "./NavLink"
 
 const links = [
     { href: '/', label: 'Home' },
@@ -11,8 +12,10 @@ export function Header() {
             <nav className="container flex items-center justify-between py-4 mx-auto">
                 <Link href="/">hszk-dev.com</Link>
                 <ul className="flex gap-4">
-                    {links.map(({ href, label }) => (
-                        <a key={href} href={href}>{label}</a>
+                    {links.map((link) => (
+                        <NavLink key={link.href} href={link.href}>
+                            {link.label}
+                        </NavLink>
                     ))}
                 </ul>
             </nav>
