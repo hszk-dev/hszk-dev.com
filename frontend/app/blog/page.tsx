@@ -1,32 +1,96 @@
-import { Footer } from "@/components/Footer";
-import { Links } from "@/components/Links";
-import Image from "next/image";
+import PostList from "@/components/PostList";
 
-export default function Home() {
+
+export default function Blog() {
+  const data = [
+    {
+      id: 1,
+      attributes: {
+        title: "Hello, World!",
+        description: "This is a test post.",
+        slug: "hello-world",
+        createdAt: "2022-01-01T00:00:00Z",
+        updatedAt: "2022-01-01T00:00:00Z",
+        publishedAt: "2022-01-01T00:00:00Z",
+        cover: {
+          data: {
+            attributes: {
+              url: "http://127.0.0.1:1337/uploads/a_bug_is_becoming_a_meme_on_the_internet_7176a326d4.jpeg",
+            },
+          },
+        },
+        category: {
+          data: {
+            attributes: {
+              name: "Test",
+              slug: "test",
+            },
+          },
+        },
+        authorsBio: {
+          data: {
+            attributes: {
+              name: "John Doe",
+              avatar: {
+                data: {
+                  attributes: {
+                    url: "http://127.0.0.1:1337/uploads/thumbnail_daviddoe_strapi_f782b9dac6.jpeg",
+                  },
+                },
+              },
+            },
+          },
+        },
+      }
+    },
+    {
+      id: 2,
+      attributes: {
+        title: "Hello, World!",
+        description: "This is a test post.",
+        slug: "hello-world",
+        createdAt: "2022-01-01T00:00:00Z",
+        updatedAt: "2022-01-01T00:00:00Z",
+        publishedAt: "2022-01-01T00:00:00Z",
+        cover: {
+          data: {
+            attributes: {
+              url: "http://127.0.0.1:1337/uploads/a_bug_is_becoming_a_meme_on_the_internet_7176a326d4.jpeg",
+            },
+          },
+        },
+        category: {
+          data: {
+            attributes: {
+              name: "Test",
+              slug: "test",
+            },
+          },
+        },
+        authorsBio: {
+          data: {
+            attributes: {
+              name: "John Doe",
+              avatar: {
+                data: {
+                  attributes: {
+                    url: "http://127.0.0.1:1337/uploads/thumbnail_daviddoe_strapi_f782b9dac6.jpeg",
+                  },
+                },
+              },
+            },
+          },
+        },
+      }
+    }
+  ]
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <Links />
-      </main>
+    <div>
+      <h1>Blog Page</h1>
+      <div className="grid grid-rows-[20px_1fr_20px] p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+        <PostList data={data} />
+      </div>
     </div>
   );
 }

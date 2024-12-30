@@ -4,6 +4,7 @@ import { NavLink } from "./NavLink"
 const links = [
     { href: '/', label: 'Home' },
     { href: '/profile', label: 'Profile' },
+    { href: '/blog', label: 'Blog' },
 ]
 
 export function Header() {
