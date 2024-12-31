@@ -1,3 +1,4 @@
+import { Certifications } from "@/components/Certiications";
 import { Skills } from "@/components/Skills";
 import Image from "next/image";
 import qs from "qs";
@@ -98,7 +99,15 @@ async function fetchProfile() {
             fields: ["name"],
           },
         }
-      }
+      },
+      certifications: {
+        fields: ["name", "issuingOrganization", "issueDate"],
+        populate: {
+          badge: {
+            fields: ["alternativeText", "name", "url"],
+          },
+        }
+      },
     }
   });
 
@@ -122,6 +131,7 @@ export default async function Profile() {
       <h1>Profile</h1>
       <ProfileCard {...profile.data} />
       <Skills skills={profile.data.skills} />
+      <Certifications certifications={profile.data.certifications} />
     </div>
   );
 }
