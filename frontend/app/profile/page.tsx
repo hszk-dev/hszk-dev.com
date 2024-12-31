@@ -5,6 +5,9 @@ interface ProfileProps {
   id: number;
   documentId: string;
   name: string;
+  birthDate: string;
+  company: string;
+  position: string;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
@@ -17,8 +20,28 @@ interface ProfileProps {
   };
 }
 
+function calculateAge(birthDateString: string): number {
+  // 生年月日を Date オブジェクトに変換
+  const birthDate = new Date(birthDateString);
+  const today = new Date(); // 現在の日付
+
+  // 年齢を計算
+  let age = today.getFullYear() - birthDate.getFullYear();
+
+  // 生年月日の月日がまだ来ていなければ、年齢を1減らす
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
+
+  return age;
+}
+
 function ProfileCard({
   name,
+  birthDate,
+  company,
+  position,
   photo,
 }: Readonly<ProfileProps>) {
   console.log(name);
@@ -33,6 +56,9 @@ function ProfileCard({
             <h2 className="text-2xl font-bold sm:text-3xl">About Me</h2>
             <nav className="grid lg:gap-10 mt-5 md:mt-10 gap-5" aria-label="Tabs" role="tablist">
               <h3>{name}</h3>
+              <h3>年齢: {calculateAge(birthDate)}才</h3>
+              <h3>所属: {company}</h3>
+              <h3>ポジション: {position}</h3>
             </nav>
           </div>
           <div className=" w-full lg:w-1/2">
@@ -48,7 +74,6 @@ function ProfileCard({
               </div>
             </div>
           </div>
-          
         </div>
       </div>
     </div>
