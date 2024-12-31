@@ -1,3 +1,4 @@
+import { Skills } from "@/components/Skills";
 import Image from "next/image";
 import qs from "qs";
 
@@ -44,7 +45,6 @@ function ProfileCard({
   position,
   photo,
 }: Readonly<ProfileProps>) {
-  console.log(name);
   const imageUrl = `${
     process.env.NEXT_PUBLIC_API_URL ?? "http://127.0.0.1:1337"
   }${photo.url}`;
@@ -90,6 +90,14 @@ async function fetchProfile() {
     populate: {
       photo: {
         fields: ["alternativeText", "name", "url"],
+      },
+      skills: {
+        fields: ["name"],
+        populate: {
+          category: {
+            fields: ["name"],
+          },
+        }
       }
     }
   });
@@ -113,6 +121,7 @@ export default async function Profile() {
     <div>
       <h1>Profile</h1>
       <ProfileCard {...profile.data} />
+      <Skills skills={profile.data.skills} />
     </div>
   );
 }
