@@ -8,5 +8,13 @@ export default (config: UserConfig) => {
         '@': '/src',
       },
     },
+    server: {
+      fs: {
+        allow: [
+          '/opt/app', // 既存の許可リスト
+          '/opt/node_modules', // 新たに許可したいディレクトリ
+        ],
+      },
+    },
   });
 };
