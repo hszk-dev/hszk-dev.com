@@ -1,4 +1,5 @@
-import { Certifications } from "@/components/Certiications";
+import { Certifications } from "@/components/Certifications";
+import { Profile } from "@/components/Profile";
 import { Skills } from "@/components/Skills";
 import Image from "next/image";
 import qs from "qs";
