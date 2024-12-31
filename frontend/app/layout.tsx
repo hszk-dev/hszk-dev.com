@@ -31,7 +31,7 @@ export default function RootLayout({
       >
         <div className="min-h-screen grid grid-rows-[auto_1fr_auto]">
           <Header />
-          <main className="container mx-auto rounded-xl py-7 px-8 m-6 overflow-hidden">
+          <main className="min-h-screen">
             {children}
           </main>
           <Footer />
